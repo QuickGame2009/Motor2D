@@ -14,7 +14,7 @@ float MaxPlayerVelocity = 50.0f;
 float MinPlayerVelocity = 5.0f;
 float PlayerVelocity = 5.0f;
 
-float scaleX, scaleY; // Escala para adaptar al tamaño de la ventana
+float scaleX, scaleY; // Escala para adaptar al tamaÃ±o de la ventana
 bool ShowGameInfo = false;
 bool F5Pressed = false;
 bool ShiftEnable = false;
@@ -49,12 +49,12 @@ PAINTSTRUCT ps;
 
 
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam); // Declaración de WindowProc
-void resizeFramebuffer(int width, int height); // Declaración de resizeFramebuffer
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam); // DeclaraciÃ³n de WindowProc
+void resizeFramebuffer(int width, int height); // DeclaraciÃ³n de resizeFramebuffer
 
 void initWindow() {
     WNDCLASS wc = {0};
-    wc.lpfnWndProc = WindowProc; // Asignar la función de procedimiento de ventana
+    wc.lpfnWndProc = WindowProc; // Asignar la funciÃ³n de procedimiento de ventana
     wc.hInstance = GetModuleHandle(NULL);
     wc.hbrBackground = (HBRUSH)(COLOR_BACKGROUND);
     wc.lpszClassName = "MyWindowClass";
@@ -100,7 +100,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 
 void resizeFramebuffer(int width, int height) {
-    // Ajustar el tamaño de la ventana en incrementos de 20 en la coordenada x & y
+    // Ajustar el tamaÃ±o de la ventana en incrementos de 20 en la coordenada x & y
     SCREEN_WIDTH  = (((width + 10) / 20) * 20)  + 20;
     SCREEN_HEIGHT = (((height + 10) / 20) * 20) + 40;
 
@@ -109,7 +109,7 @@ void resizeFramebuffer(int width, int height) {
         DeleteObject(hBitmap);
     }
 
-    // Actualizar el tamaño del bitmap
+    // Actualizar el tamaÃ±o del bitmap
     bmi.bmiHeader.biWidth = SCREEN_WIDTH;
     bmi.bmiHeader.biHeight = -SCREEN_HEIGHT;  // negative for top-down bitmap
     hBitmap = CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, (void**)&framebuffer, NULL, 0);
@@ -119,7 +119,7 @@ void resizeFramebuffer(int width, int height) {
     scaleX = (float)WORLD_WIDTH / (float)SCREEN_WIDTH;
     scaleY = (float)WORLD_HEIGHT / (float)SCREEN_HEIGHT;
 
-    // Mostrar el tamaño de la ventana en el título
+    // Mostrar el tamaÃ±o de la ventana en el tÃ­tulo
     char title[50];
     sprintf(title, "2D World Game");
     SetWindowText(hwnd, title);
@@ -178,7 +178,7 @@ void GameInfo() {
     sprintf(info, "FPS: Disabled");
     TextOut(hdcMem, 10, 40, info, strlen(info));
     sprintf(info, "Window Size: %dx%d", SCREEN_WIDTH, SCREEN_HEIGHT);
-    TextOut(hdcMem, 10, 60, info, strlen(info)); // Ajustar la posición según sea necesario
+    TextOut(hdcMem, 10, 60, info, strlen(info)); // Ajustar la posiciÃ³n segÃºn sea necesario
     
     }
     
@@ -199,11 +199,11 @@ void DetectKeys() {
         
 		if (GetAsyncKeyState(VK_F5) & 0x8000) {
             if (!F5Pressed) { // Si no estaba presionado antes
-                 ShowGameInfo = !ShowGameInfo; // Cambia el estado de mostrar información
+                 ShowGameInfo = !ShowGameInfo; // Cambia el estado de mostrar informaciÃ³n
                  F5Pressed = true; // Marca que F5 fue presionado
             }
         } else {
-            F5Pressed = false; // Resetea el estado cuando F5 no está presionado
+            F5Pressed = false; // Resetea el estado cuando F5 no estÃ¡ presionado
 		}
 		
         if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
@@ -344,7 +344,7 @@ int main() {
             DispatchMessage(&msg);
         }
 
-        // Simulación de la lógica del juego
+        // SimulaciÃ³n de la lÃ³gica del juego
         Sleep(16);
     }
 
